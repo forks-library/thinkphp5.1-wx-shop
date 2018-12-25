@@ -1,0 +1,40 @@
+{include file="tpl/header"}
+<div class="header">
+    <div class="title_left"><a class="back_btn" href="javascript:;" onclick="toBack()"></a></div>
+    <div class="header_tit">评价晒单</div>
+    <div class="scar_head_r"></div>
+</div>
+<div class="toevaluate_cont">
+    <div class="toeva_pro">
+        <div class="pic">
+            <img id="proPic" src="" alt="" />
+        </div>
+        <div class="elvalyate_star">
+            <p>商品评分</p>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <div class="toeva_font">
+        <textarea class="eval_comment" placeholder="请输入您的评价"></textarea>
+    </div>
+    <div class="toeva_img z_photo">
+        <div class="toeva_imgitem upload_btn z_file" id="upload_btn">
+        	<form id="formTag1" enctype="multipart/form-data">
+        		<input type="file" name="images" id="files" value="" accept="image/*"/>
+        		<!--  input type="file" name="images" id="file" value="" accept="image/*" multiple onchange="imgChange('z_photo','z_file');" /-->
+        	</form>
+        </div>
+    </div>
+    <div class="refer_evaluate">提交评价</div>
+</div>
+<div class="suc_evaluate_masking">
+    <div class="suc_evaluate">评价成功</div>
+</div>
+{include file="tpl/js"}
+{include file="tpl/footer"}

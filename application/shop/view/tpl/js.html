@@ -1,0 +1,11 @@
+<script type="text/javascript">
+    window._hostUrl = '{$webUrl}';
+</script>
+<script src = '__PUBLIC__/static/js/jquery-1.10.1.min.js'></script>
+<script src = '__PUBLIC__/static/js/template-web.js'></script>
+<script src = '__PUBLIC__/static/js/comm.js'></script>
+{if isset($pageJs) && !empty($pageJs)}
+{foreach $pageJs as $key=>$js } 
+<script src = '__PUBLIC__/static/js/{$js}.js'></script>
+{/foreach}
+{/if}

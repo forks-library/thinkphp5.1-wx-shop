@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{$title}</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/static/css/base.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/static/css/dgcy.css" /> -->
+    {if isset($pageCss) && !empty($pageCss)}
+    {foreach $pageCss as $key=>$css } 
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/static/css/{$css}.css" />
+    {/foreach}
+    {/if}
+    {if $handyType == 'ios'}
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/static/css/ios.css" />
+    {elseif $handyType == 'android' /}
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/static/css/and.css" />
+    {else /}
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/static/css/other.css" />
+    {/if}
+    <script src="__PUBLIC__/static/css/flexible.js"></script>
+     {if isset($openid) && !empty($openid)}
+    <input type = 'hidden' id="wxUserID" value="{$openid}">
+    {/if}
+</head>
+<body>

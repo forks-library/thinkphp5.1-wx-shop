@@ -1,0 +1,71 @@
+{include file="tpl/header"}
+<div class="header">
+    <div class="title_left"><a class="back_btn" href="javascript:;" onclick="toBack()"></a></div>
+    <div class="header_tit">我的订单</div>
+    <div class="scar_head_r"></div>
+</div>
+<div class="my_order_frame">
+    <div class="my_order_tab">
+        <ul>
+            <li class="">
+                <a href="javascript:;" onclick="getOrderData()"><span class="border">全部</span></a>
+            </li>
+            <li>
+                <a href="javascript:;" onclick="getOrderData(1)"><span class="border">待付款</span></a>
+            </li>
+            <li>
+                <a href="javascript:;" onclick="getOrderData(2)"><span class="border">待发货</span></a>
+            </li>
+            <li>
+                <a href="javascript:;" onclick="getOrderData(3)"><span class="border">待收货</span></a>
+            </li>
+            <li><a href="evaluate"><span class="border">待评价</span></a></li>
+        </ul>
+    </div>
+    <div class="orderlist_frame order_list" id="content">
+        <ul>
+            <!-- <li class="item">
+                <div class="header_frame">
+                    <a href="javascript:;" class="help" onclick="help_show($(this))" data-value="每笔订单拍下后24小时内有效，超时订单将自动关闭"><i></i></a>
+                    <a href="/order/order-info?order_id=211151" class="order_id">订单编号：2018120138838361</a>
+                    <span class="status">待付款</span>
+                </div>
+                <div class="content_frame">
+                    <a href="/goods-586.html">
+			            <div class="pic"><img src="https://img.buydeem.cn//goods/201811/1542080487963887229.jpeg"></div>
+			            <div class="info">
+			                <div class="title">阿胶糕 10g*20/盒</div>
+			                <div class="price">¥168.00</div>
+			            </div>
+			            <div class="count">×1</div>
+                    </a>
+                </div>
+                <div class="content_frame">
+                    <a href="/goods-723.html">
+			            <div class="pic"><img src="https://img.buydeem.cn/goods/201808/1534127772632419168.jpg">            </div>
+			            <div class="info">
+			                <div class="title">五红水×3，五黑水×3  组合套餐</div>
+			                <div class="price">¥109.00</div>
+			            </div>
+			            <div class="count">×1</div>
+                    </a>
+                </div>
+                <div class="bottom_frame">
+                    <div class="price">实付：<span>¥485.70</span></div>
+                    <div class="btn_frame">
+                        <a href="javascript:;" class="btn1" onclick="">取消订单</a>
+                        <a href="/payment/pay?id=211151" class="btn2" id="btn211151">抢先支付<span id="hour211151">09</span><em>:</em><span id="minute211151">54</span><em>:</em><span id="second211151">12</span></a>
+                    </div>
+                </div>
+            </li>
+            <div class="ias-noneleft" style="text-align: center;" id="ias_noneleft_1543649896290"></div> -->
+        </ul>
+        <!-- <div id="cutDownTime"></div> -->
+    </div>
+</div>
+<div class="tipsMasking">
+    <div class="suc_del_msg" style="display: block;">订单删除成功</div>
+</div>
+{include file="tpl/footMenu"}
+{include file="tpl/js"}
+{include file="tpl/footer"}

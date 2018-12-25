@@ -1,0 +1,35 @@
+{include file="tpl/header"}
+<div class="header">
+    <div class="header_tit">选择支付方式</div>
+</div>
+<div class="topay_cont">
+	<div class="topay_item active" data-id="wechat">
+		<div class="pay_sel"></div>
+		<img src="__PUBLIC__/static/images/pay_icon.png" alt="">
+	</div>
+</div>
+<div class="topay_btn">去支付</div>
+<!-- 支付申请蒙层 -->
+<div class="toPayMasking">支付申请中</div>
+<!-- 支付成功 -->
+<div class="pay_suc_masking" style="display: none;">
+	<div class="pay_suc" style="display: block;">
+		<div class="title">温馨提示</div>
+		<div class="cont">支付成功</div>
+		<div class="btn">
+			<a href="{$webUrl}shop/v1/order">查看订单</a>
+			<a href="{$webUrl}shop/v1/category">继续选购</a>
+		</div>
+	</div>
+</div>
+<!-- 支付失败 -->
+<!-- <div class="pay_fail">
+	<div class="title">温馨提示</div>
+	<div class="cont">支付失败</div>
+	<div class="btn">
+		<a href="{$webUrl}shop/v1/order">查看订单</a>
+	</div>
+</div> -->
+{include file="tpl/footMenu"}
+{include file="tpl/js"}
+{include file="tpl/footer"}

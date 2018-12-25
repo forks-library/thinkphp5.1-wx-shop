@@ -1,0 +1,91 @@
+{include file="tpl/header"}
+<div class="header">
+    <div class="title_left"><a class="back_btn" href="javascript:;" onclick="toBack()"></a></div>
+    <div class="header_tit">个人资料</div>
+    <div class="scar_head_r">
+        <!-- <div class="info_savebtn">保存</div> -->
+    </div>
+</div>
+<div class="profile_frame">
+    <!-- <div class="personal_data_header">
+        <div class="pic">
+            <img src="__PUBLIC__/static/images/tou.png">
+        </div>
+        <div class="text">
+            点击修改头像<input type="file" class="upload_pic" id="upload" name="file">
+        </div>
+    </div>
+    <div class="personal_data_content">
+        <ul>
+            <li>
+                <span>用户昵称</span>
+                <div class="text_border">
+                    <input type="text" class="text username" id="user_name" name="user_name" value="Raymond." readonly="readonly">
+                </div>
+            </li>
+            <li>
+                <span>性别</span>
+                <div class="text_border">
+                    <input type="text" class="text usersex" id="user_sex" name="user_sex" value="男" readonly="readonly">
+                </div>
+            </li>
+            <li>
+                <span>出生年月</span>
+                <div class="text_border">
+                    <input type="date" class="text date" value="请选择日期" >
+                </div>
+            </li>
+            <li>
+                <a href="address">
+                    <span>收货地址</span>
+                        <div class="text_border">
+                        <i class="link_right"></i>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div> -->
+    <script id="userInfoTmp" type="text/html">
+    <% if (userInfoMsg) { %>
+        <div class="personal_data_header">
+            <div class="pic">
+                <% if (userInfoMsg.head_img_url) { %>
+                <img src="<%= userInfoMsg.head_img_url %>">
+                <% } else { %>
+                <img src="__PUBLIC__/static/images/tou.png">
+                <% } %>
+            </div>
+        </div>
+        <div class="personal_data_content">
+            <ul>
+                <li>
+                    <span>用户昵称</span>
+                    <div class="text_border">
+                        <input type="text" class="text username" id="user_name" name="user_name" value="<%= userInfoMsg.nick_name %>" readonly="readonly">
+                    </div>
+                </li>
+                <li>
+                    <span>性别</span>
+                    <div class="text_border">
+                        <% if (userInfoMsg.sex == 1) { %>
+                        <input type="text" class="text usersex" id="user_sex" name="user_sex" value="男" readonly="readonly">
+                        <% } else { %>
+                        <input type="text" class="text usersex" id="user_sex" name="user_sex" value="女" readonly="readonly">
+                        <% } %>
+                    </div>
+                </li>
+                <li>
+                    <a href="address">
+                        <span>收货地址</span>
+                            <div class="text_border">
+                            <i class="link_right"></i>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>        
+    <% } %>
+    </script>
+</div>
+{include file="tpl/js"}
+{include file="tpl/footer"}

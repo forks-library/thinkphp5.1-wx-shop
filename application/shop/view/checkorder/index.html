@@ -1,0 +1,274 @@
+{include file="tpl/header"}
+<!-- 确认目录 -->
+<!-- 主页面 -->
+<div class="order_frame">
+    <!-- 头部 -->
+    <div class="header">
+        <div class="title_left"><a class="back_btn" href="javascript:;" onclick="toBack()"></a></div>
+        <div class="header_tit">订单确认</div>
+        <div class="scar_head_r"></div>
+    </div>
+    <div class="main-container" style="padding-top: 1.2rem;padding-bottom: 1.28rem;">
+        <div class="shipAddress_frame">
+            <!-- <a href="javascript:;" class="addlocation_btn">添加收货地址</a> -->
+            <div class="shipAddress">
+                <!-- <div class="info">
+                    <p class="user_info">
+                        <span class="username">黄先生</span>
+                        <span>13580804939</span>
+                    </p>
+                    <p class="address"><label class="">默认</label>天津 天津市 河东区 11</p>
+                </div>
+                <div class="bac"></div> -->
+            </div>
+            <script id="defaultAddress" type="text/html">
+                <% if (addressMsg) { %>
+                <div class="info" data-id="<%=addressMsg.mt_address_id %>">
+                    <p class="user_info">
+                        <span class="username"><%= addressMsg.user_name %></span>
+                        <span id="sure_phone"><%= addressMsg.phone %></span>
+                    </p>
+                    <p class="address"><label class="">默认</label><span id="sure_adress"><%= addressMsg.province_city %><%= addressMsg.address %></span></p>
+                </div>
+                <div class="bac"></div>
+                <% } else { %> 
+                <div class="info">
+                    <p class="user_info">
+                        <span class="username"></span>
+                        <span id="sure_phone"></span>
+                    </p>
+                    <p class="address"><label class="display-none">默认</label><span id="sure_adress"></span></p>
+                </div>
+                <div class="bac"></div>
+                <% } %>               
+            </script>
+            <script id="choiceLocation" type="text/html">
+                <% if (choiceAddressMsg) { %>
+                <div class="info" data-id="<%=choiceAddressMsg.mt_address_id %>">
+                    <p class="user_info">
+                        <span class="username"><%= choiceAddressMsg.user_name %></span>
+                        <span id="sure_phone"><%= choiceAddressMsg.phone %></span>
+                    </p>
+                    <p class="address"><label <% if (choiceAddressMsg.is_default == 0) { %>class="display-none" <% } %>>默认</label><span id="sure_adress"><%= choiceAddressMsg.province_city %><%= choiceAddressMsg.address %></span></p>
+                </div>
+                <div class="bac"></div>
+                <% } else { %> 
+                <div class="info">
+                    <p class="user_info">
+                        <span class="username"></span>
+                        <span id="sure_phone"></span>
+                    </p>
+                    <p class="address"><label class="display-none">默认</label><span id="sure_adress"></span></p>
+                </div>
+                <div class="bac"></div>
+                <% } %>      
+            </script>
+        </div>
+        <div class="goods_slide">
+            <!-- <div class="swiper_router">
+                <ul class="swiper-wrapper" style="">
+                    <li class="swiper-slide swiper-slide-active">
+                        <div class="pic"><img src="https://img.buydeem.cn//goods/201811/1542612626071780948.jpeg"></div>
+                    </li>
+                </ul>
+            </div> -->
+            <!-- <div class="number_frame"><span>共5件</span></div> -->
+            <script id="goodInfoImgs" type="text/html">
+                <% if (infoImages) { %>
+                <div class="swiper_router">
+                    <ul class="swiper-wrapper" style="">
+                        <% for (var i = 0; i<infoImages.length; i++) { %>
+                            <li class="swiper-slide swiper-slide-active">
+                                <div class="pic"><img src="<%= infoImages[i].display_pic %>"></div>
+                            </li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="number_frame"><span>共<i id="sku_num"></i>件</span></div>
+                <% } %>
+            </script>
+        </div>
+        <div class="order_info_frame">
+            <div class="frame">
+                <div class="left">商品合计</div>
+                <div class="right" >¥<span id="sku_total"></span></div>
+            </div>
+            <div class="frame">
+                <div class="left">运费</div>
+                <div class="right">¥<span id="freight">0.00</span></div>
+            </div>
+        </div>
+        <div class="leaving_message_frame">
+            <input type="text" name="leaving_message" placeholder="买家留言（45字以内）" maxlength="45" class="text leaving_message">
+        </div>
+    </div>
+    <div class="order_footer_frame">
+        <div class="content">
+            <div class="paid_price">
+                实付：<span>¥</span><span id="actualPayment">0.00</span>
+            </div>
+            <a href="javascript:;" class="once_btn">立即下单</a>
+        </div>
+    </div>
+</div>
+<!-- 商品清单 -->
+<div class="goods_list_frame" style="display: none;">
+    <div class="header_float">
+        <div class="left" id="hide_btn">
+            <a href="javascript:;"></a>
+        </div>
+        <div class="center">商品清单</div>
+        <div class="right">
+            <div class="count">共<span id="sku_num1"></span>件</div>
+        </div>
+    </div>
+    <ul>
+        <!-- <li id="1193397">
+            <div class="pic">
+                <img src="https://img.buydeem.cn//goods/201811/1542612626071780948.jpeg">
+            </div>
+            <div class="info">
+                <div class="title">K159养生壶 全新炖煮壶 茱萸粉</div>
+                <div class="price">¥1398.00</div>
+                <div class="number">×1</div>
+            </div>
+        </li>-->
+        <script id="goodsList" type="text/html">
+        <% if (goodsMsg) { %>
+            <% for (var i = 0; i<goodsMsg.length; i++) { %>
+            <li id="<%= goodsMsg[i].mt_shop_cart_id %>">
+                <div class="pic">
+                    <img src="<%= goodsMsg[i].display_pic %>">
+                </div>
+                <div class="info">
+                    <div class="title"><%= goodsMsg[i].title %></div>
+                    <div class="price">¥<%= goodsMsg[i].price %></div>
+                    <div class="number">×<%= goodsMsg[i].sku_num %></div>
+                </div>
+            </li>
+            <% } %> 
+        <% } %>     
+        </script>
+    </ul>
+</div>
+<!-- 地址管理 -->
+<div class="location_list_frame" style="display: none;">
+    <div class="header_float">
+        <div class="left">
+            <a href="javascript:;" id="hideadd_btn"></a>
+        </div>
+        <div class="center">地址管理</div>
+    </div>
+    <div class="address_list_frame">
+        <ul>
+            <!-- <li data-id="111908">
+                <div class="info">
+                    <div class="left">
+                        <div class="username">黄先生</div>
+                    </div>
+                    <div class="right">
+                        <div class="tel">13580804939</div>
+                        <div class="address">广东省深圳市南山区111</div>
+                    </div>
+                </div>
+                <a href="javascript:;" class="delete"></a>
+                <a href="javascript:;" class="edit"></a>
+            </li>
+            <li data-id="111908">
+                <div class="info">
+                    <div class="left">
+                        <div class="username">黄先生</div>
+                        <label>默认</label>
+                    </div>
+                    <div class="right">
+                        <div class="tel">13580804939</div>
+                        <div class="address">广东省深圳市南山区111</div>
+                    </div>
+                </div>
+                <a href="javascript:;" class="delete"></a>
+                <a href="javascript:;" class="edit"></a>
+            </li> -->
+            <script id="addressData" type="text/html">
+            <% if (addressMsg) { %>
+                <% for (var i = 0; i < addressMsg.length; i++) { %>
+                <li>
+                    <div class="info" onclick="choiceAdress(<%= addressMsg[i].mt_address_id %>)">
+                        <div class="left">
+                            <div class="username"><%= addressMsg[i].user_name %></div>
+                            <% if (addressMsg[i].is_default == 1) { %>
+                            <label>默认</label>
+                            <% } %> 
+                        </div>
+                        <div class="right">
+                            <div class="tel"><%= addressMsg[i].phone %></div>
+                            <div class="address"><%= addressMsg[i].province_city %><%= addressMsg[i].address %></div>
+                        </div>
+                    </div>
+                    <a href="javascript:;" class="delete" onclick="delLocation(<%= addressMsg[i].mt_address_id %>)"></a>
+                    <a href="javascript:;" class="edit" onclick="editLocation(<%= addressMsg[i].mt_address_id %>)"></a>
+                </li>
+                <% } %> 
+            <% } %>     
+            </script>
+        </ul>
+        <a href="javascript:;" class="location_add_btn">添加新地址</a>
+    </div>
+</div>
+<!-- 地址管理 -->
+<!-- 增加地址 -->
+<div class="add_location_frame" style="display: none;">
+    <div class="header_float">
+        <div class="left">
+            <a href="javascript:;"n"></a>
+        </div>
+        <div class="center">添加地址</div>
+    </div>
+    <div class="form_frame">
+        <input type="hidden" value="" readonly="readonly" id="addressId">
+        <div class="text_frame">
+            <input type="text" placeholder="姓名" maxlength="6" class="text username">
+        </div>
+        <div class="text_frame">
+            <input type="number" placeholder="手机号码" max="11" class="text tel">
+        </div>
+        <!--选择地区-->
+        <section class="express-area">
+            <a id="expressArea" href="javascript:void(0)">
+                <dl>
+                    <dd>省份、城市、区县</dd>
+                </dl>
+            </a>
+        </section>
+        <div class="text_frame">
+            <input type="text" placeholder="详细地址，如街道地址等" maxlength="30" class="text address">
+        </div>
+        <div class="is_default_frame">
+            <a href="javascript:;">
+                <input type="hidden" value="0" class="is_default">设为默认地址
+            </a>
+        </div>
+    </div>
+    <div class="btn_frame">
+        <a href="javascript:;" id="cancel_btn">取消</a>
+        <a href="javascript:;" id="save_btn">保存</a>
+    </div>
+    <!--选择地区弹层-->
+    <section id="areaLayer" class="express-area-box" style="bottom: -100%;">
+        <header>
+            <h3>选择地区</h3>
+            <a id="backUp" class="back" href="javascript:void(0)" title="返回" onclick="intProvince();">返回</a>
+            <a id="closeArea" class="close" href="javascript:void(0)" title="关闭">关闭</a>
+        </header>   
+        <article id="areaBox">
+            <ul id="areaList" class="area-list"></ul>
+        </article>
+    </section>
+    <!--遮罩层-->
+    <div id="areaMask" class="mask" style="display: none;"></div>
+</div>
+<!-- 消息提示 -->
+<div class="suc_addlocation_msg">添加成功</div>
+<div class="suc_dellocation_msg">删除成功</div>
+<div class="suc_editlocation_msg">修改成功</div>
+{include file="tpl/js"}
+{include file="tpl/footer"}

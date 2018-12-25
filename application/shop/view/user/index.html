@@ -1,0 +1,142 @@
+{include file="tpl/header"}
+<div class="webFrame">
+	<div class="personal_header">
+		<!-- 未登录 -->
+		<div class="noLogin_frame">
+			<a href="javascript:;">
+				<div class="pic">
+                    <!-- <img src="__PUBLIC__/static/images/no_login_img.png"> -->
+                </div>
+<!-- 				<div class="info">
+					<div class="link">登录／注册</div>
+				</div> -->
+			</a>
+            <script id="userInfoTmp" type="text/html">
+            <% if (userInfoMsg) { %>
+                <% if (userInfoMsg.head_img_url) { %>
+                <img src="<%= userInfoMsg.head_img_url %>">
+                <% } else { %>
+                <img src="__PUBLIC__/static/images/tou.png">
+                <% } %>
+            <% } %>
+            </script>
+		</div>
+		<!-- 未登录 end -->
+        <a href="set" class="step">设置管理<i></i></a>
+    </div>
+    <div class="personal_floor1">
+        <div class="title_frame"><a href="order"><h3>我的订单</h3><span>查看全部订单</span></a></div>
+        <div class="content">
+            <a href="order?orderType=1"><div class="pic"></div><span>待付款</span></a>
+            <a href="order?orderType=2"><div class="pic"></div><span>待发货</span></a>
+            <a href="order?orderType=3"><div class="pic"></div><span>待收货</span></a>
+            <a href="/order/order-evaluate"><div class="pic"></div><span>待晒单</span></a>
+            <a href="/order/customer-list"><div class="pic"></div><span>售后处理</span></a>
+        </div>
+    </div>
+    <div class="banner-container banner_frame">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="__PUBLIC__/static/images/banner1.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="__PUBLIC__/static/images/banner2.jpg" alt="">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="personal_floor2">
+        <div class="title_frame">
+        	<h3>常用功能</h3>
+        </div>
+        <div class="content">
+            <a href="#">
+            	<div class="pic">
+            		<img class="icon-user1" src="__PUBLIC__/static/images/user_icon1.png" alt="">
+            	</div>
+            	<span>邀请返现</span>
+            </a>
+            <a href="#">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon2.png" alt="">
+            	</div>
+            	<span>账户安全</span>
+            </a>
+            <a href="#">
+            	<div class="pic">
+            		<img class="icon-user3" src="__PUBLIC__/static/images/user_icon3.png" alt="">
+            	</div>
+            	<span>优惠中心</span>
+            </a>
+            <a href="#">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon4.png" alt="">
+            	</div>
+            	<span>会员权益</span>
+            </a>
+            <a href="#">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon5.png" alt="">
+            	</div>
+            	<span>积分兑换</span>
+            </a>
+            <a href="#">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon6.png" alt="">
+            	</div>
+            	<span>帮助中心</span>
+            </a>
+            <a href="#">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon7.png" alt="">
+            	</div>
+            	<span>意见反馈</span>
+            </a>
+            <a href="#">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon8.png" alt="">
+            	</div>
+            	<span>我的收藏</span>
+            </a>
+            <a href="#">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon9.png" alt="">
+            	</div>
+            	<span>玻璃险</span>
+            </a>
+            <a href="#">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon10.png" alt="">
+            	</div>
+            	<span>延保卡</span>
+            </a>
+            <a href="#">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon11.png" alt="">
+            	</div>
+            	<span>我的体质</span>
+            </a>
+            <a href="#">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon12.png" alt="">
+            	</div>
+            	<span>企业团购</span>
+            </a>
+            <a href="">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon13.png" alt="">
+            	</div>
+            	<span>底座换修</span>
+            </a>
+            <a href="">
+            	<div class="pic">
+            		<img src="__PUBLIC__/static/images/user_icon14.png" alt="">
+            	</div>
+            	<span>联系客服</span>
+            </a>
+        </div>
+    </div>
+</div>
+{include file="tpl/footMenu"}
+{include file="tpl/js"}
+{include file="tpl/footer"}

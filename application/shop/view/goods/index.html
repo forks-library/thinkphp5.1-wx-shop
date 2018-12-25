@@ -1,0 +1,339 @@
+{include file="tpl/header"}
+<!-- 头部 -->
+<div class="tab-header" id="tab-header">
+    <div class="left"><a href="javascript:history.back(-1);" class="link back"></a></div>
+    <div class="center">
+        <div class="tab" id="tab-center">
+            <a href="javascript:;" onclick="scrollAnchorsChange(1)">商品</a>
+            <a href="javascript:;" onclick="scrollAnchorsChange(2)">评价</a>
+            <a href="javascript:;" onclick="scrollAnchorsChange(3)">详情</a>
+        </div>
+        <div class="tab_evaluation">
+            <a href="javascript:;">商品评价</a>
+        </div>
+    </div>
+    <div class="right">
+        <a href="" class="link home"></a>
+    </div>
+</div>
+<!-- 头部 end -->
+<!--商品详情 start-->
+<div class="module_detail" id="module_detail" style="padding-bottom: 1.2rem">
+    <div id="pro1">
+        <!-- 轮播图 -->
+        <div class="banner-wrapper swiper-container-horizontal">
+            <div id = "productpics" class="swiper-wrapper bannerShow">
+	            
+            </div>
+            <div class="banner-index swiper-pagination-fraction"></div>
+        </div>
+        <script id="lunpic" type="text/html"> 
+			<% if (imgs) { %>
+				<% for (var i = 0; i < imgs.length; i++) { %>
+                	<a href="" class="swiper-slide">
+                   		<img src="<%= imgs[i]%>" />
+                	</a>
+				<% } %>
+			<% } %>
+		</script>
+        <!-- 轮播图 end -->
+        <!-- 商品信息 -->
+        <div class="goods-info" id = "goods-info">
+            <!--h1 class="title">雪梨无花果 99g/盒</h1>
+            <div class="msg">滋阴润燥 润肺止咳&nbsp;</div>
+            <div class="price">¥22.9<span>¥24.9</span></div>
+            <div class="info">
+                <div class="item">库存：2793</div>
+                <div class="item">销量：46595</div>
+            </div-->
+        </div>
+        <script id = "goodInfo" type="text/html">
+			<h1 class="title"><%= productname %></h1>
+            <div class="msg"><%= productinfo %></div>
+            <div class="price">¥<i><%= price %></i><span>¥<%= price %></span></div>
+		</script>
+        <!-- 商品信息end -->
+        <!-- 优惠信息 -->
+        <!--div class="discount-info">
+            <div class="item promotion-item" onclick="">
+                <h3>促销</h3>
+                <div>
+                    <div class="promotion">
+                        <label>包邮</label>
+                        <p>满200.00元</p>
+                    </div>
+                    <div class="promotion">
+                        <label>满赠</label>
+                        <p>满1件，赠送：玻璃密封储物罐 600ml x1；满2件，赠送：玻璃密封储物罐 1200ml x1；</p>
+                    </div>
+                </div>
+            </div>
+        </div-->
+        <!-- 优惠信息 end -->
+        <!-- 已选商品 -->
+        <div class="goods-chosen"><h3>已选</h3>
+            <p><span id="choicename"></span><span class="choicenumber" id="choicenum"></span>件</p>
+        </div>
+        <!-- 已选商品 end -->
+        <div style="height: 0.27rem;background-color: #f4f4f4"></div>
+    </div>
+
+    <!--用户评价 start-->
+    <div class="evaluate-wrapper" id="two_evaluate">
+        <div class="big_title" onclick="evaluateShow()">
+            <div class="left">用户评价（164条）</div>
+            <div class="right"><span>100%</span>好评</div>
+        </div>
+        <div class="evaluate-list">
+            <div class="item">
+                <div class="goods-user-header">
+                    <div class="user-info">
+                        <div class="img"><img src="__PUBLIC__/static/images/user1.jpg"></div>
+                        <div class="info">
+                            <div class="name">姗*</div>
+                            <div class="level">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </div>
+                         </div>
+                        <div class="grade grade3"></div>
+                    </div>
+                    <div class="date">2018-08-04</div>
+                </div>
+                <div class="content">怀孕囤货的，为了宝宝好，也是值得的。泡发率很高的，燕丝粗壮，基本也没啥毛可挑。一盏一码吃着放心。燕窝价格越来越高了，活动的时候多囤点还有礼物送很划算。</div>
+                <div class="img-wrapper">
+                    <div class="img">
+                        <a href="">
+                            <img src="__PUBLIC__/static/images/pinglun1.jpg">
+                        </a>
+                    </div>
+                    <div class="img">
+                        <a href="">
+                            <img src="__PUBLIC__/static/images/pinglun2.jpg">
+                        </a>
+                    </div>
+                    <div class="img">
+                        <a href="">
+                            <img src="__PUBLIC__/static/images/pinglun2.jpg">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--用户评价 end-->
+    <div id="pro2"></div>
+    <!--tab 导航 -->
+    <div class="tab" id="tab_static">
+        <a href="javascript:;" onclick="scrollAnchorsChange(4)">商品介绍</a>
+        <a href="javascript:;" onclick="scrollAnchorsChange(5)">规格参数</a>
+        <a href="javascript:;" onclick="scrollAnchorsChange(6)">常见问题</a>
+    </div>
+    <!--tab 导航 end -->
+    <div id="tab_cont">
+        <!--tab 商品介绍 -->
+        <div class="tab-content" id="tab_cont1">
+            <div class="goods-desc" id = "info-imgs">
+                <!-->img src="__PUBLIC__/static/images/goods4.jpg" alt="">
+                <img src="__PUBLIC__/static/images/goods5.jpg" alt="">
+                <img src="__PUBLIC__/static/images/goods6.jpg" alt=""-->
+            </div>
+            <script id="goodInfoImgs" type="text/html">
+				<% if (infoImages) { %>
+					<% for(var i = 0; i<infoImages.length; i++) {%>
+						<img src="<%= infoImages[i] %>" alt="" />
+					<% } %>
+				<% } %>
+			</script>
+        </div>  
+        <!--tab 商品介绍 end-->
+        <!--tab 规格参数 -->
+        <div class="tab-content" id="tab_cont2">
+            <div class="rule-parameters">
+                <!--table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">主体</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>分类</td>
+                            <td>燕窝</td>
+                        </tr>
+                    </tbody>
+                </table-->
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">规格参数</th>
+                        </tr>
+                    </thead>
+                    <tbody id = 'parameter1'>
+                        
+                    </tbody>
+                    <script id = "googPar", type="text/html">
+						<% if (parameter) { %>
+							<% for (var i = 0; i < parameter.length; i++) { %>
+								<tr>
+									<% for (var j = 0; j < parameter[i].length; j++) { %>
+                            			<td><%= parameter[i][j]%></td>
+									<% } %>
+                        		</tr>
+							<% } %>
+						<% } %>
+					</script>
+                </table>
+            </div>
+        </div>  
+        <!--tab 规格参数 end-->
+        <!--tab 常见问题 -->
+        <div class="tab-content" id="tab_cont3">
+            <div class="problem-wrapper">
+                <h3>常见问题</h3>
+                <p></p>
+                <p>Q：什么时候发货？</p>
+                <p>A：每日下午4点前订单(蜂蜜3点截单)当日会安排发出，活动期间订单较多快递可能延迟，小北会督促仓库小伙伴快马加鞭为您寄出，请耐心等待物流运输。&nbsp;</p>
+                <p><br></p>
+                <p>Q：商品发什么快递？</p>
+                <p>A：商城自有食材料包（蜂蜜除外）用品默认圆通快递，满300元包顺丰快递；蜂蜜默认百世汇通，满300包邮；电器（烤箱除外）默认顺丰快递，会与赠品分开发货。配件产品只发圆通快递。</p>
+                <p></p>
+            </div>
+            <div class="problem-wrapper">
+                <h3>常见问题</h3>
+                <p></p>
+                <p>Q：什么时候发货？</p>
+                <p>A：每日下午4点前订单(蜂蜜3点截单)当日会安排发出，活动期间订单较多快递可能延迟，小北会督促仓库小伙伴快马加鞭为您寄出，请耐心等待物流运输。&nbsp;</p>
+                <p><br></p>
+                <p>Q：商品发什么快递？</p>
+                <p>A：商城自有食材料包（蜂蜜除外）用品默认圆通快递，满300元包顺丰快递；蜂蜜默认百世汇通，满300包邮；电器（烤箱除外）默认顺丰快递，会与赠品分开发货。配件产品只发圆通快递。</p>
+                <p></p>
+            </div>
+        </div>
+         <!--tab 常见问题 end-->
+    </div>
+</div>
+<!-- 详情页底部 -->
+<div class="goods-footer" id="goods-footer">
+    <div class="link">
+        <div class="content">
+            <a href="javascript:;" class="service" onclick=""><span>客服</span></a>
+            <a href="shopcar" class="cart"><span>购物车</span><em></em> </a>
+        </div>
+    </div>
+    <div class="btn">
+        <a href="javascript:;" onclick="addShopCar(1)">立即购买</a>
+        <a href="javascript:;" onclick="addShopCar(2)">加入购物车</a>
+    </div>
+</div>
+<!-- 详情页底部 end -->
+<!-- 弹窗 -->
+<a href="javascript:;" class="go_top" onclick="go_top()" style="display: none;"></a>
+<!-- 促销弹窗 -->
+<div class="popup-wrapper promotion" style="display: none;">
+    <div class="bac"></div>
+    <div class="content-wrapper">
+        <div class="popup-head"><h3>促销</h3>
+        </div>
+        <div class="popup-content" style="">
+            <div class="content" style="">
+                <div class="item before">
+                    <label>包邮</label>
+                    <div class="msg"><p>满200.00元</p></div>
+                </div>
+                <div class="item before">
+                    <label>满赠</label>
+                    <div class="msg">
+                        <p>满1件，赠送：<br>玻璃密封储物罐 600ml x1<br>满2件，赠送：<br>玻璃密封储物罐 1200ml x1<br></p>
+                    </div>
+                </div>
+            </div>
+            <div class="integral_info">
+                <label>积分</label>
+                <div class="msg">
+                    <p>按照实付金额获取相应积分,实付1元获取1积分,以此类推</p>
+                </div>
+            </div>
+        </div>
+        <a href="javascript:;" class="closed" onclick=""></a>
+    </div>
+</div>
+<!-- 促销弹窗 end -->
+<!-- 商品选择弹窗 -->
+<div class="goodsChoice-popup">
+<div class="bac" onclick="goodsChoiceHide()"></div>
+	<div class="content-wrapper">
+	    <div class="popup-head">
+	        <div class="pic"><img id="choiceimg" src=""></div>
+	        <div class="info">
+	             <div class="price">价格：¥<span id="choiceprice"></span></div>
+	             <div class="stock">库存：<span id="choicestock"></span></div>
+	        </div>
+	    </div>
+        <div class="popup-content" style="">
+            <div class="content" style="">
+                <!-- 选择 -->
+                <div class="choice-wrapper">
+                    <h3>选择</h3>
+                    <div class="choice-content" id = "choice-content">
+                        <a href="javascript:;">印尼燕盏 50g</a>
+                        <a href="javascript:;">特级龙牙大盏 50g</a>
+                    </div>
+                </div>
+                <script id = "skuchoose" type="text/html">
+					<% if (skus) { %>
+						<% for(var i = 0; i < skus.length; i++) { %>
+                            <% if (i == 0) { %>
+                            <a class="current" href="javascript:;" 
+                               data-skuid = "<%= skus[i].mt_product_sku_id %>"
+                               data-price = "<%= skus[i].price %>"
+                               data-repertory = "<%= skus[i].repertory %>"
+                               data-spmodel = "<%= skus[i].sp_model %>"
+                               data-productid = "<%= skus[i].product_id %>"
+                               data-displaypic = "<%= skus[i].display_pic %>"><%= skus[i].sp_model %></a>
+                            <% } else { %>
+                            <a href="javascript:;" 
+                               data-skuid = "<%= skus[i].mt_product_sku_id %>"
+                               data-price = "<%= skus[i].price %>"
+                               data-repertory = "<%= skus[i].repertory %>"
+                               data-spmodel = "<%= skus[i].sp_model %>"
+                               data-productid = "<%= skus[i].product_id %>"
+                               data-displaypic = "<%= skus[i].display_pic %>"><%= skus[i].sp_model %></a>
+                            <% } %> 
+						<% } %>
+					<% } %>
+				</script>
+                <!-- 选择 end -->
+                <!-- 购买数量 -->
+                <div class="number-wrapper">
+                    <h3>购买数量</h3>
+                    <p></p>
+                    <div class="number-choice">
+                        <a href="javascript:;" class="reduce current" onclick="goodsReduce()">-</a>
+                        <div class="text">
+                            <input type="number" class="number" value="1" min="1" max="99">
+                        </div>
+                        <a href="javascript:;" class="addnum" onclick="goodsAdd()">+</a>
+                    </div>
+                </div>
+                <!-- 购买数量 end -->
+            </div>
+        </div>
+        <div class="popup-bottom">
+            <a href="javascript:;" id="buy_btn" onclick="addShopCar(1)">立即购买</a>
+            <a href="javascript:;" id="add_btn" onclick="addShopCar(2)">加入购物车</a>
+        </div>
+        <a href="javascript:;" class="closed" id="goodsChoiceHide"></a>
+    </div>
+</div>
+<!-- 商品选择弹窗 end-->
+<!-- 加入购物车成功 -->
+<div class="suc_add_cart">加入购物车成功</div>
+<!-- 加入购物车成功 end-->
+<!-- 弹窗 end-->
+{include file="tpl/js"}
+{include file="tpl/footer"}

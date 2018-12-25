@@ -1,0 +1,66 @@
+{include file="tpl/header"}
+<!-- 增加地址 -->
+<div class="add_location_frame">
+    <div class="header_float">
+        <div class="left">
+            <a href="javascript:;" onclick="toBack()"></a>
+        </div>
+        <div class="center">修改地址</div>
+    </div>
+    <div id="addDataShow"></div>
+</div>
+<script id="addressMsgTmp" type="text/html">
+    <% if (addressMsg) { %>
+    <div class="form_frame">
+        <input type="hidden" value="" readonly="readonly" id="addressId">
+        <div class="text_frame">
+            <input type="text" placeholder="姓名" maxlength="6" class="text username" value="<%= addressMsg.user_name %>">
+        </div>
+        <div class="text_frame">
+            <input type="number" placeholder="手机号码" max="11" class="text tel" value="<%= addressMsg.phone %>">
+        </div>
+        <!--选择地区-->
+        <section class="express-area">
+            <a id="expressArea" href="javascript:void(0)">
+                <dl>
+                    <dd><%= addressMsg.province_city %></dd>
+                </dl>
+            </a>
+        </section>
+        <div class="text_frame">
+            <input type="text" placeholder="详细地址，如街道地址等" maxlength="30" class="text address" value="<%= addressMsg.address %>">
+        </div>
+        <div class="is_default_frame">
+            <% if(addressMsg.is_default == 0) {%>
+            <a href="javascript:;">
+                <input type="hidden" value="0" class="is_default">设为默认地址
+            </a>
+            <% } else { %>
+            <a href="javascript:;" class="current">
+                <input type="hidden" value="1" class="is_default">设为默认地址
+            </a>
+            <% } %>
+        </div>
+    </div>
+    <div class="btn_frame">
+        <a href="javascript:;" onclick="toBack()">取消</a>
+        <a href="javascript:;" id="save_btn">保存</a>
+    </div>
+    <!--选择地区弹层-->
+    <section id="areaLayer" class="express-area-box" style="bottom: -100%;">
+        <header>
+            <h3>选择地区</h3>
+            <a id="backUp" class="back" href="javascript:void(0)" title="返回" onclick="intProvince();">返回</a>
+            <a id="closeArea" class="close" href="javascript:void(0)" title="关闭">关闭</a>
+        </header>   
+        <article id="areaBox">
+            <ul id="areaList" class="area-list"></ul>
+        </article>
+    </section>
+    <!--遮罩层-->
+    <div id="areaMask" class="mask" style="display: none;"></div>
+    <% } %>
+</script>
+<div class="suc_addlocation_msg">修改成功</div>
+{include file="tpl/js"}
+{include file="tpl/footer"}

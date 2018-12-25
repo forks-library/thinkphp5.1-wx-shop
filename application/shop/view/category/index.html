@@ -1,0 +1,72 @@
+{include file="tpl/header"}
+<!-- 头部 -->
+<div class="header">
+    <div class="title_left"><a class="back_btn" href="javascript:history.back(-1);"></a></div>
+    <div class="header_tit">食材</div>
+    <div class="title_right"><a class="search_btn" href=""></a></div>
+</div>
+<div class="cate-container">
+    <div class="cate-left">
+        <div id="cate_left_cont">
+            <!-- <a href="javascript:;" class="active">
+                <div class="pic">
+                    <img src="__PUBLIC__/static/images/class-icon.png" alt="">
+                </div>
+                <div class="title">食材</div>
+            </a>
+            <a href="javascript:;">
+                <div class="pic">
+                    <img src="__PUBLIC__/static/images/class-icon.png" alt="">
+                </div>
+                <div class="title">食材</div>
+            </a> -->
+            <script id="cateLeftTmp" type="text/html">
+            <% if (cateLeftMsg.length > 0) { %>
+                <% for (var i = 0;i < cateLeftMsg.length; i++) { %>
+                <a href="javascript:;" <% if (i == 0) { %>class="active"<% } %> data-id="<%= cateLeftMsg[i].mt_goods_category_id %>">
+                    <div class="pic">
+                        <img src="<%= cateLeftMsg[i].icon %>" alt="">
+                    </div>
+                    <div class="title"><%= cateLeftMsg[i].category_name %></div>
+                </a>
+                <% } %>
+            <% } %>
+            </script>
+        </div>
+    </div>
+    <div class="cate-right">
+        <div class="cate-right-container">
+           <!--  <div class="img_box">
+                <img src="__PUBLIC__/static/images/cate-title.png" alt="">
+            </div>
+            <div class="cate_box">
+                <a href="">
+                    <div class="pic">
+                        <img src="__PUBLIC__/static/images/1512627552399941086.png" alt="">
+                    </div>
+                    <div class="title">养生壶</div>
+                </a>
+            </div> -->
+            <script id="cateRightTmp" type="text/html">
+                <% if (cateRightMsg.length > 0) { %>
+                    <div class="img_box">
+                        <img src="__PUBLIC__/static/images/cate-title.png" alt="">
+                    </div>
+                    <div class="cate_box">
+                        <% for (var i = 0;i < cateRightMsg.length; i++) { %>
+                        <a href="">
+                            <div class="pic">
+                                <img src="<%= cateRightMsg[i].icon %>" alt="">
+                            </div>
+                            <div class="title"><%= cateRightMsg[i].atrr_name %></div>
+                        </a>
+                        <% } %>
+                    </div>
+                <% } %>
+            </script>
+        </div>
+    </div>
+</div>
+{include file="tpl/footMenu"}
+{include file="tpl/js"}
+{include file="tpl/footer"}
