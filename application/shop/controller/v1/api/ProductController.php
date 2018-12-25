@@ -22,14 +22,15 @@ class ProductController extends Controller {
 			$page = 1;
 		}
 		
+		$where = ' 1 = 1 and deleted = 0 and on_sale = 1 ';
 		if (!empty($categoryId)) {
-			$mtProduct->where('category_id', $categoryId);
+			$where .= ' and atrr_id = \''.$categoryId.'\''; //二级类别  后期可以扩展商品模块，现在只是满足比较小的需求
 		}
+		
 		$field = [
 			'mt_product_id', 'category_id', 'product_name', 'display_pic', 'price'
 		];
-		$productLists = $mtProduct->where('deleted', 0)->where('on_sale', 1)
-						->field($field)->paginate([$page, 20])->toArray();
+		$productLists = $mtProduct->where($where)->field($field)->paginate([$page, 20])->toArray();
 		
 		return json(array('datas' => $productLists));
 	}

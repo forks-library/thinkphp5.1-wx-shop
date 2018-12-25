@@ -14,6 +14,8 @@ class MtCommentModel extends BaseModel {
 	
 	protected $pk = 'mt_comment_id';
 	
+	protected $autoWriteTimestamp = true;
+	
 	public function getImgsAttr($value)
 	{
 		$imgs = urldecode($value);
@@ -35,7 +37,7 @@ class MtCommentModel extends BaseModel {
 						->join('mt_product_sku mps', 'mps.mt_product_sku_id = mcm.sku_id')
 						->join('mt_product mp', 'mp.mt_product_id = mps.product_id')
 						->join('wx_user_resource wur', 'wur.user_wx_id = mcm.user_id')
-						->field(['mps.sp_model','mcm.imgs', 'mcm.notes', 'mcm.stars', 'wur.nick_name', 'wur.head_img_url'])
+						->field(['mps.sp_model','mcm.imgs', 'mcm.notes', 'mcm.stars', 'mcm.update_time','wur.nick_name', 'wur.head_img_url'])
 						->paginate([$page, $length]);
 		return $comment;
 	}
