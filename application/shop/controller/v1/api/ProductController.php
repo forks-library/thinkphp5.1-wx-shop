@@ -35,7 +35,7 @@ class ProductController extends Controller {
 		}
 		//搜索
 		if (!empty($search)) {
-			$where .= ' and product_name like \''.$search.'\'';
+			$where .= ' and product_name like \'%'.$search.'%\'';
 		}
 		
 		$field = ['mt_product_id', 'category_id', 'product_name', 'display_pic', 'price'];

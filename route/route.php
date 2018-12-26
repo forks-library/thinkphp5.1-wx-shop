@@ -54,6 +54,10 @@ Route::get('shop/:version/rull', 'shop/:version.order/rull');
 Route::get('shop/:version/sign', 'shop/:version.user/sign');
 //等级特权
 Route::get('shop/:version/privilege', 'shop/:version.user/privilege');
+//搜索页面
+Route::get('shop/:version/search', 'shop/:version.search/index');
+//搜索列表
+Route::get('shop/:version/rakedlist', 'shop/:version.search/rakedlist');
 
 /**************************************************API*********************************************/
 //获取产品列表

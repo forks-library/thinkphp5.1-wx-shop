@@ -1,8 +1,12 @@
 {include file="tpl/header"}
-<div class="header">
-    <div class="title_left"><a class="back_btn" href="javascript:history.back(-1);"></a></div>
-    <div class="header_tit"></div>
-    <div class="title_right"><a class="search_btn" href=""></a></div>
+<div class="search_box">
+    <a href="javascript:window.history.go(-1);" class="search_back"></a>
+    <div id="save_form">
+        <div class="content1">
+            <input type="text" class="text" placeholder="搜索商品" name="keyword" />
+            <a href="javascript:;" class="btn" onclick="searchWeb()"></a>
+        </div>
+    </div>
 </div>
 <!-- 排序 -->
 <div class="sort_frame">
