@@ -26,6 +26,7 @@ class CategoryController extends Controller {
 		$categoryId = $this->request->param('categoryid');
 		$list       = MtCategoryAtrrModel::where('deleted', 0)->where('category_id', $categoryId)
 						->field(['mt_category_atrr_id', 'category_id', 'icon', 'atrr_name'])->select();
+						
 		return json(array('datas' => $list));
 	}
 }

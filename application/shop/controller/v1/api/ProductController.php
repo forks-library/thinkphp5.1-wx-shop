@@ -18,18 +18,27 @@ class ProductController extends Controller {
 	public function getproductList(MtProductModel $mtProduct) {
 		$categoryId = $this->request->param('category_id');
 		$page       = $this->request->param('page');
+		$search     = $this->request->param('search');
 		if (!is_numeric($page) || intval($page) < 1) {
 			$page = 1;
 		}
 		
 		$where = ' 1 = 1 and deleted = 0 and on_sale = 1 ';
 		if (!empty($categoryId)) {
-			$where .= ' and atrr_id = \''.$categoryId.'\''; //二级类别  后期可以扩展商品模块，现在只是满足比较小的需求
+			if (str_start_with($categoryId, 'index')) {
+				$categoryId = substr($categoryId, strpos($categoryId, '_')+1);
+				$where .= ' and category_id = \''.$categoryId.'\'';
+			} elseif (str_start_with($categoryId, 'list')) {
+				$categoryId = substr($categoryId, strpos($categoryId, '_')+1);
+				$where .= ' and atrr_id = \''.$categoryId.'\''; //二级类别  后期可以扩展商品模块，现在只是满足比较小的需求
+			}
+		}
+		//搜索
+		if (!empty($search)) {
+			$where .= ' and product_name like \''.$search.'\'';
 		}
 		
-		$field = [
-			'mt_product_id', 'category_id', 'product_name', 'display_pic', 'price'
-		];
+		$field = ['mt_product_id', 'category_id', 'product_name', 'display_pic', 'price'];
 		$productLists = $mtProduct->where($where)->field($field)->paginate([$page, 20])->toArray();
 		
 		return json(array('datas' => $productLists));
@@ -40,12 +49,9 @@ class ProductController extends Controller {
 		$productId = $this->request->param('id');
 		
 		if (empty($productId)) {
-			throw new \think\exception\ValidateException('id不能为空', '403');
+			return json(array('data' => []));
 		}
-		$field = [
-			'paf.mt_product_sku_id' ,'paf.price' ,'paf.repertory' ,'paf.sp_model'
-			,'paf.product_id' ,'paf.display_pic'
-		];
+		$field = ['paf.mt_product_sku_id' ,'paf.price' ,'paf.repertory' ,'paf.sp_model','paf.product_id' ,'paf.display_pic'];
 		//商品数据
 		$productData= $mtProduct->where('mt_product_id', $productId)
 						->field(['mt_product_id', 'imgs', 'product_name', 'price', 'parameter', 'min_notes', 'info_imgs'])->find();

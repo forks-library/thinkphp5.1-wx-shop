@@ -60,3 +60,16 @@ function get_nonce_str($length = 32)
 	
 	return $str;
 }
+/**
+ * 字符串是否存在
+ * @param string $str
+ * @param string $strMark
+ * return true/false 
+ */
+function str_start_with($str, $strMark) {
+	$str = trim($str);
+	if (!empty($str)) {
+		return strpos($str, $strMark) === 0;
+	}
+	return false;
+}
