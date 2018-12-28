@@ -26,6 +26,14 @@ class ShopcartController extends Controller {
 		$skuId  = $this->request->param('sku_id');
 		$skuNum = $this->request->param('sku_num');
 		
+		if (str_start_with($skuId, 'pro')) {
+			$productId = substr($skuId, strpos($skuId, '_')+1); //首页传来的加入购物车ID为产品ID
+			$skuIdArr  =  MtProductSkuModel::where('product_id', $productId)->order('mt_product_sku_id', 'asc')->find();
+			$skuId = $skuIdArr->mt_product_sku_id;
+		} elseif (str_start_with($skuId, 'sku')) {
+			$skuId = substr($skuId, strpos($skuId, '_')+1); //为商品skuId
+		}
+		
 		$bln = $mtShopCartModel->addGoodsToCart($userId, $skuId, $skuNum);
 		
 		if (!$bln) {
